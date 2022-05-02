@@ -26,6 +26,18 @@ namespace BizStreamContactFormBackend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            // This cors policy allows the frontend to connect to the backend.
+            // Write your cors policy on Azure instead of here for production.
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyHeader()
+                                       .AllowAnyOrigin()
+                                      .AllowAnyMethod();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +47,10 @@ namespace BizStreamContactFormBackend
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // This cors policy allows the frontend to connect to the backend.
+            // Write your cors policy on Azure instead of here for production.
+            app.UseCors("AllOrigins");
 
             app.UseHttpsRedirection();
 
