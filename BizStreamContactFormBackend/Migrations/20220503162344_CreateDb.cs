@@ -2,7 +2,7 @@
 
 namespace BizStreamContactFormBackend.Migrations
 {
-    public partial class CreateDB : Migration
+    public partial class CreateDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace BizStreamContactFormBackend.Migrations
                     FirstName = table.Column<string>(maxLength: 100, nullable: false),
                     LastName = table.Column<string>(maxLength: 100, nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    Message = table.Column<string>(nullable: false)
+                    Message = table.Column<string>(maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {

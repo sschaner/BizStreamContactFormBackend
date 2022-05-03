@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BizStreamContactFormBackend.Migrations
 {
     [DbContext(typeof(PersonContext))]
-    [Migration("20220426151443_CreateDB")]
-    partial class CreateDB
+    [Migration("20220503162344_CreateDb")]
+    partial class CreateDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,7 +43,8 @@ namespace BizStreamContactFormBackend.Migrations
 
                     b.Property<string>("Message")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
 
                     b.HasKey("PersonId");
 
